@@ -1,9 +1,6 @@
 [workspace]
-
+resolver = "3"
 members = [
-#    "raspberrypi-utils-meta",
     "raspberrypi-utils-sys",
     "raspberrypi-utils",
 ]
-
-resolver = "3"
