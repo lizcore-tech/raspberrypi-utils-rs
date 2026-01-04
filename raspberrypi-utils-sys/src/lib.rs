@@ -6,3 +6,7 @@
 
 // Include the generated bindings
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+
+mod ws2812;
+
+pub use ws2812::*;
