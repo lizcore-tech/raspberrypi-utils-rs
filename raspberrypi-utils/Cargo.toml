@@ -6,8 +6,8 @@ description = "Safe Rust bindings for raspberrypi-utils"
 documentation = "https://docs.rs/raspberrypi-utils"
 repository = "https://github.com/lizcore-tech/raspberrypi-utils-rs"
 license = "MIT OR BSD 3-Clause"
-keywords = ["raspberrypi-utils", "camera"]
-categories = ["external-ffi-bindings", "leds", "ws281x", "piolib"]
+keywords = ["raspberrypi-utils", "leds", "ws281x", "piolib"]
+categories = ["hardware-support"]
 readme = "../README.md"
 authors = ["Marçal Juan Llaó <marcal@lizcore.com>"]
 
