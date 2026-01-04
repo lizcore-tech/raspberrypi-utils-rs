@@ -1,6 +1,6 @@
 [package]
 name = "raspberrypi-utils"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2024"
 description = "Safe Rust bindings for raspberrypi-utils"
 documentation = "https://docs.rs/raspberrypi-utils"
