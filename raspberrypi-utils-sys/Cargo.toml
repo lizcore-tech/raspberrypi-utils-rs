@@ -5,9 +5,14 @@ edition = "2024"
 description = "Low-level unsafe bindings to raspberrypi-utils"
 documentation = "https://docs.rs/raspberrypi-utils-sys"
 repository = "https://github.com/lizcore-tech/raspberrypi-utils-rs"
-license = "MIT OR Apache-2.0"
+license = "MIT OR BSD 3-Clause"
 keywords = ["raspberrypi-utils", "camera"]
 categories = ["external-ffi-bindings", "leds", "ws281x", "piolib"]
 readme = "../README.md"
 
 [dependencies]
+
+[build-dependencies]
+bindgen = "0.72.1"
+cmake = "0.1"
+cc = "1.2.51"
