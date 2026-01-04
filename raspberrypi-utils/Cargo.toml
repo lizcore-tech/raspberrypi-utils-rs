@@ -1,0 +1,23 @@
+[package]
+name = "raspberrypi-utils"
+version = "0.0.1"
+edition = "2024"
+description = "Safe Rust bindings for raspberrypi-utils"
+documentation = "https://docs.rs/raspberrypi-utils"
+repository = "https://github.com/lizcore-tech/raspberrypi-utils-rs"
+license = "MIT OR BSD 3-Clause"
+keywords = ["raspberrypi-utils", "camera"]
+categories = ["external-ffi-bindings", "leds", "ws281x", "piolib"]
+readme = "../README.md"
+authors = ["Marçal Juan Llaó <marcal@lizcore.com>"]
+
+[dependencies]
+raspberrypi-utils-sys = { path = "../raspberrypi-utils-sys", version = "0.0.1" }
+
+[build-dependencies]
+
+[dev-dependencies]
+
+[[example]]
+name = "ws281x"
+path = "examples/ws281x.rs"
