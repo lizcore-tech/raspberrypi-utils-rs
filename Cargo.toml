@@ -1,0 +1,9 @@
+[workspace]
+
+members = [
+#    "libcamera-meta",
+    "raspberrypi-utils-sys",
+#    "libcamera",
+]
+
+resolver = "3"
