@@ -15,8 +15,6 @@ Project structure:
 
 Code generation uses a cached clone under `libcamera-git`; run `cargo run --bin generate_from_git` (or `./regenerate.sh`) occasionally to fetch the latest upstream tags before regenerating `versioned_files`. These bindings intentionally track libcamera’s public, application-facing API; pipeline-handler internals aren’t surfaced.
 
-Unreleased documentation for `main`: [here](https://lit-robotics.github.io/libcamera-rs/libcamera/index.html)
-
 ## Building
 
 `libcamera-sys` requires [libcamera](https://libcamera.org/) installed and accessible via pkg-config. Check official [getting started guide](https://libcamera.org/getting-started.html) on how to build libcamera. Note that we don't have a release schedule tied to libcamera yet so breaking changes are likely. This also means that any binary distributions (e.g. in Ubuntu 22.04) will likely be too old. This crate is known to build with libcamera `v0.4.0` and up.
