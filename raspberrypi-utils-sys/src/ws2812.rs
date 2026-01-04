@@ -100,6 +100,6 @@ impl Ws2812 {
     }
 }
 
-pub fn urgb_u32(r: u8, g: u8, b: u8) -> u32 {
+pub const fn urgb_u32(r: u8, g: u8, b: u8) -> u32 {
     ((r as u32) << 8) | ((g as u32) << 16) | (b as u32)
 }

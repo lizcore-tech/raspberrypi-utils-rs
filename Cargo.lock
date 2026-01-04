@@ -239,7 +239,7 @@ dependencies = [
 
 [[package]]
 name = "raspberrypi-utils"
-version = "0.0.2"
+version = "0.0.3"
 dependencies = [
  "rand",
  "raspberrypi-utils-sys",
@@ -247,7 +247,7 @@ dependencies = [
 
 [[package]]
 name = "raspberrypi-utils-sys"
-version = "0.0.2"
+version = "0.0.3"
 dependencies = [
  "bindgen",
  "cc",
