@@ -2,7 +2,7 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
-    let piolib_dir = PathBuf::from("../piolib-src");
+    let piolib_dir = PathBuf::from("piolib-src");
     let include_dir = piolib_dir.join("include");
 
     println!("cargo:rerun-if-changed=wrapper.h");
