@@ -9,6 +9,7 @@ license = "MIT OR BSD 3-Clause"
 keywords = ["raspberrypi-utils", "camera"]
 categories = ["external-ffi-bindings", "leds", "ws281x", "piolib"]
 readme = "../README.md"
+authors = ["Marçal Juan Llaó <marcal@lizcore.com>"]
 
 [dependencies]
 
