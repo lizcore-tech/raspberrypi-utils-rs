@@ -15,14 +15,6 @@ pub struct Ws2812 {
     offset: u32,
 }
 
-// extern "C" {
-//     // These match the symbols the linker was complaining about.
-//     // We declare them here to ensure Rust knows they are external.
-//     fn stdio_init_all();
-//     fn pio_claim_unused_sm(pio: *mut pio_instance, required: bool) -> i32;
-//     fn pio_add_program(pio: *mut pio_instance, program: *const pio_program) -> u32;
-// }
-
 impl Ws2812 {
     pub fn new(gpio: u32) -> Result<Self, String> {
         unsafe {
@@ -57,12 +49,8 @@ impl Ws2812 {
 
             let offset = pio_add_program(pio, &ws2812_program);
 
-            println!("WS2812, using pin {:?}", gpio);
+            println!("WS2812, using GPIO {:?}", gpio);
             println!("Loaded program at {:?}, using sm {:?}", offset, sm);
-
-            // You'll need to link the ws2812.pio.h equivalent logic here
-            // Often pio programs are converted to headers with a struct
-            // For now, this is the structural equivalent of your C main()
 
             Ok(Self {
                 pio,
@@ -87,45 +75,21 @@ impl Ws2812 {
         }
     }
 
-    pub fn program_init(&self, rgbw: bool) {
+    pub fn program_init(&self, frequency: Option<u32>, is_rgbw: bool) {
+        let frequency = frequency.unwrap_or(FREQ);
+
         unsafe {
             pio_gpio_init(self.pio, self.gpio_pin);
             pio_sm_set_consecutive_pindirs(self.pio, self.sm, self.gpio_pin, 1, true);
             let mut c: pio_sm_config = self.program_get_default_config();
             sm_config_set_sideset_pins(&mut c, self.gpio_pin);
-            sm_config_set_out_shift(&mut c, false, true, if rgbw { 32 } else { 24 });
+            sm_config_set_out_shift(&mut c, false, true, if is_rgbw { 32 } else { 24 });
             sm_config_set_fifo_join(&mut c, pio_fifo_join_PIO_FIFO_JOIN_TX);
             let cycles_per_bit = WS2812_T1 + WS2812_T2 + WS2812_T3;
-            let div = clock_get_hz(clock_index_clk_sys) as f32 / (FREQ * cycles_per_bit) as f32;
+            let div = clock_get_hz(clock_index_clk_sys) as f32 / (frequency * cycles_per_bit) as f32;
             sm_config_set_clkdiv(&mut c, div);
             pio_sm_init(self.pio, self.sm, self.offset, &mut c);
             pio_sm_set_enabled(self.pio, self.sm, true);
-        }
-    }
-
-    fn pattern_snakes(&self, len: u32, t: u32) {
-        for i in 0..len {
-            let x = (i + (t >> 1)) % 64;
-            if x < 10 {
-                self.put_pixel(urgb_u32(0xff, 0, 0));
-            } else if x >= 15 && x < 25 {
-                self.put_pixel(urgb_u32(0, 0xff, 0));
-            } else if x >= 30 && x < 40 {
-                self.put_pixel(urgb_u32(0, 0, 0xff));
-            } else {
-                self.put_pixel(0);
-            }
-        }
-    }
-
-    pub fn program_run(&self) {
-        let num_pixels = 150;
-        let dir = 1;
-        let mut t = 0;
-        for _ in 0..100 {
-            self.pattern_snakes(num_pixels, t);
-            std::thread::sleep(std::time::Duration::from_millis(10));
-            t += dir;
         }
     }
 
