@@ -23,3 +23,13 @@ git clone --recursive https://github.com/lizcore-tech/raspberrypi-utils-rs.git
 # OR if already cloned:
 git submodule update --init --recursive
 ```
+
+To publish a new version of the crate:
+
+- Update both Cargo.toml files with the new version `raspberrypi-utils/Cargo.toml` and `raspberrypi-utils-sys/Cargo.toml`
+- Run:
+
+```bash
+cargo publish --dry-run
+cargo publish
+```
