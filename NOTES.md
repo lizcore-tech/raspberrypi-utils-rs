@@ -26,10 +26,23 @@ git submodule update --init --recursive
 
 To publish a new version of the crate:
 
+- Update `raspberrypi-utils` repository and copy the files of the library
+
+```bash
+cd raspberrypi-utils-git/
+cp -r raspberrypi-utils-git/piolib/* raspberrypi-utils-sys/piolib-src/
+```
+
 - Update both Cargo.toml files with the new version `raspberrypi-utils/Cargo.toml` and `raspberrypi-utils-sys/Cargo.toml`
-- Run:
+- Then publish the new version:
 
 ```bash
 cargo publish --dry-run
 cargo publish
+```
+
+- If failed due to expired token, re-login and try again:
+
+```bash
+cargo login
 ```
