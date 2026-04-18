@@ -1,6 +1,6 @@
 [package]
 name = "raspberrypi-utils"
-version = "0.0.3"
+version = "0.0.4"
 edition = "2024"
 description = "Safe Rust bindings for raspberrypi-utils"
 documentation = "https://docs.rs/raspberrypi-utils"
@@ -13,7 +13,7 @@ authors = ["Marçal Juan Llaó <marcal@lizcore.com>"]
 
 [dependencies]
 raspberrypi-utils-sys = { path = "../raspberrypi-utils-sys", version = "0.0.3" }
-rand = "0.9.2"
+rand = "0.10.1"
 
 [dev-dependencies]
 
