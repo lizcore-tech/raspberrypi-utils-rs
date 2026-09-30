@@ -49,9 +49,6 @@ impl Ws2812 {
 
             let offset = pio_add_program(pio, &ws2812_program);
 
-            println!("WS2812, using GPIO {:?}", gpio);
-            println!("Loaded program at {:?}, using sm {:?}", offset, sm);
-
             Ok(Self {
                 pio,
                 sm: sm as u32,
