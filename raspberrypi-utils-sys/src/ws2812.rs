@@ -8,6 +8,7 @@ const WS2812_T2: u32 = 4;
 const WS2812_T3: u32 = 3;
 const FREQ: u32 = 800_000;
 
+#[derive(Debug)]
 pub struct Ws2812 {
     pio: *mut pio_instance,
     sm: u32,

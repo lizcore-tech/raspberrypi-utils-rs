@@ -2,6 +2,7 @@ use raspberrypi_utils_sys::{Ws2812};
 
 pub use raspberrypi_utils_sys::urgb_u32;
 
+#[derive(Debug)]
 pub struct LedString {
     hw: Ws2812,
 }
